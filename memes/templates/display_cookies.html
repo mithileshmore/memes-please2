@@ -1,0 +1,14 @@
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load staticfiles %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<div id="right_pod" style="display: block;margin-left: auto;margin-right: auto;width: 40%;">
+    {% for i in memes %}
+        <div class="user_pod" >
+            <img src={{ i }} alt="just a random meme!" width="300" height="300">
+        </div>
+    </br>
+    {% endfor %}
+<div id="right_pod">

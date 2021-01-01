@@ -1,0 +1,40 @@
+{% load i18n static %}
+{% load staticfiles%}
+
+<head>  
+    <meta charset="UTF-8">  
+    <title>Cookie Display</title>  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+    <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head> 
+<div class="form-group row cookies_display" id="cookies_display">  
+    <label class="col-sm-2 col-form-label">Cookies:</label>  
+    <div class="col-sm-4">  
+      {{ cookies }}  
+    </div>  
+</div>
+<div id="CookielawBanner">
+<div class="cookie-content">
+    <div class="cookie-text">
+        {% trans 'This website uses cookies to make your experience better.' %}
+    </div>
+    <form method="POST" class="post-form" id="cookies-form" action="/show/"> 
+        {% csrf_token %}  
+        <div class="cookie-buttons">
+            <button class="btn-orange" name="cookie_ok" id="cookie_ok" href="javascript:Cookielaw.createCookielawCookie();">{% trans "Ok, understood" %}</a>
+        </div>
+        <button type="close-cookies" name="close-cookies" id="close-cookies" class="close-cookies">close</button>  
+    </form>  
+</div>
+</div>
+
+
+<script type="application/javascript">
+$(document).ready(function () {
+   $('.close-cookies').click(function () {
+       $(this).parent().hide();
+   });
+    $("#cookies_display").delay(5000).fadeOut();
+});
+</script>
